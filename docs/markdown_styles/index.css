@@ -1,0 +1,63 @@
+@font-face {
+  font-family: "staatliches";
+  src: url("../../../markdown/02_fontes/Staatliches/Staatliches-Regular.ttf")
+    format(truetype);
+  font-weight: normal;
+  font-style: normal;
+}
+
+body {
+  background-color: #f1faee;
+  color: black;
+}
+
+p {
+  margin-bottom: 0px;
+  text-align: left;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  margin-top: 5px;
+  margin-bottom: 5px;
+}
+
+h1 {
+  font-family: "staatliches";
+  font-size: 90px;
+  text-align: center;
+  line-height: 100px;
+}
+
+h2 {
+  font-family: "staatliches";
+  font-size: 45px;
+  text-align: center;
+  line-height: 0px;
+}
+
+h3 {
+  font-size: 30px;
+  text-align: center;
+}
+
+h4 {
+  font-size: 20px;
+}
+hr {
+  border: none;
+  height: 2px;
+  background-color: black;
+  width: 100%;
+  margin: 20px auto;
+  padding: 0px;
+}
+
+ul {
+  list-style-type: square;
+  margin-top: 10px;
+}
