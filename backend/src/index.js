@@ -1,14 +1,30 @@
 require("dotenv").config({ path: "../.env" });
-
+const cors = require("cors");
 const express = require("express");
 const { authenticateDataBase } = require("./config/dataBaseConnection");
+const path = require("path");
 
 const app = express();
 const PORT = process.env.PORT || 3000;
 
 // Middlewares para JSON e URL'S.
+app.use(cors());
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
+
+// Chamando o frontend.
+
+app.use(express.static(path.join(__dirname, "../../frontend")));
+
+app.use(express.static(path.join(__dirname, "../../frontend")));
+
+app.get("/", (req, res) => {
+  res.sendFile(path.join(__dirname, "../../frontend/pages/Login.html")); // Página inicial
+});
+
+app.get("/register", (req, res) => {
+  res.sendFile(path.join(__dirname, "../../frontend/pages/Register.html"));
+});
 
 // Importando as rotas.
 const userRoutes = require("./routes/UserRoutes");

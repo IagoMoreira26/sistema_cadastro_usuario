@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="shortcut icon" href="favicon.ico" type="image/x-icon" />
+    <title>SCU - Cadastro</title>
+    <link rel="stylesheet" href="../styles/Additional_Info_Register.css" />
+    <link
+      href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css"
+      rel="stylesheet"
+    />
+  </head>
+  <body>
+    <div class="wrapper">
+      <h1>Complete seu perfil</h1>
+      <div class="profile-photo">
+        <input
+          type="file"
+          id="profilePic"
+          accept="image/*"
+          style="display: none"
+        />
+        <img src="../assets/default_profile.png" alt="Foto de Perfil" />
+        <i
+          class="bx bx-camera upload-icon"
+          onclick="document.querySelector('.profile-photo input[type=\'file\']').click();"
+        ></i>
+      </div>
+      <div class="input-box">
+        <input type="text" placeholder="Nome" required />
+        <i class="bx bx-user"></i>
+      </div>
+      <div class="input-box">
+        <input type="text" placeholder="Sobrenome" required />
+        <i class="bx bx-user"></i>
+      </div>
+      <div class="input-box bio-container">
+        <textarea placeholder="Descrição" required></textarea>
+        <i class="bx bx-pencil"></i>
+      </div>
+      <button type="button" class="btn">
+        Salvar <i class="bx bx-check"></i>
+      </button>
+    </div>
+  </body>
+</html>
