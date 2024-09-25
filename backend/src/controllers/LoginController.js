@@ -38,7 +38,12 @@ async function login(req, res) {
 
     return res
       .status(200)
-      .json({ success: true, message: "Login efetuado com sucesso!", token, userId: user.id, });
+      .json({
+        success: true,
+        message: "Login efetuado com sucesso!",
+        token,
+        userId: user.id,
+      });
   } catch (error) {
     console.log(error);
     return res.status(500).json({
