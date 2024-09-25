@@ -1,13 +1,13 @@
 const Profile = require("../models/Profile");
 const Joi = require("joi");
 
-// Valida os dados ao criar um perfil.
 const createProfileSchema = Joi.object({
-  name: Joi.string().min(1).allow("").required(),
-  surname: Joi.string().min(1).allow("").required(),
-  profile_photo: Joi.string().allow(""),
-  bio: Joi.string().allow(""),
+  name: Joi.string().min(1).allow("").optional(), // Não é obrigatório, mas não pode ser vazio se fornecido
+  surname: Joi.string().min(1).allow("").optional(), // O mesmo para o sobrenome
+  profile_photo: Joi.string().allow(null, "").optional(), // Permite null ou vazio
+  bio: Joi.string().allow("").optional(), // Permite string vazia
 });
+
 
 // Valida os dados ao atualizar um perfil.
 const updateProfileSchema = Joi.object({

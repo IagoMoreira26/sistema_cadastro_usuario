@@ -27,6 +27,7 @@ Profile.init(
     },
     profile_photo: {
       type: DataTypes.STRING,
+      allowNull: true,
     },
     bio: {
       type: DataTypes.TEXT,

@@ -15,25 +15,16 @@ app.use(express.urlencoded({ extended: true }));
 // Chamando o frontend.
 
 app.use(express.static(path.join(__dirname, "../../frontend")));
-
-app.use(express.static(path.join(__dirname, "../../frontend")));
-
-app.get("/", (req, res) => {
-  res.sendFile(path.join(__dirname, "../../frontend/pages/Login.html")); // Página inicial
-});
-
-app.get("/register", (req, res) => {
-  res.sendFile(path.join(__dirname, "../../frontend/pages/Register.html"));
-});
+app.use('/pages', express.static(path.join(__dirname, '../../frontend/pages')));
 
 // Importando as rotas.
 const userRoutes = require("./routes/UserRoutes");
-const profileRoutes = require("./routes/ProfileRoutes");
+const ManageProfileRoutes = require("./routes/ManageProfileRoutes");
 const loginRoutes = require("./routes/LoginRoutes");
 
 // Usando as rotas.
 app.use("/api/users", userRoutes);
-app.use("/api/profiles", profileRoutes);
+app.use("/api/profiles", ManageProfileRoutes);
 app.use("/api/login", loginRoutes);
 
 // Tratamento de erros.

@@ -1,0 +1,102 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Poppins", sans-serif;
+}
+
+body {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  background: url(../assets/background.jpg) no-repeat;
+  background-size: cover;
+  background-position: center;
+}
+
+.wrapper {
+  width: 90vw; /* Quase toda a largura da tela */
+  height: 90vh; /* Quase toda a altura da tela */
+  background: #fff;
+  border: 2px solid rgba(255, 255, 255, 0.2);
+  backdrop-filter: blur(20px);
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+  color: #000;
+  border-radius: 10px;
+  padding: 30px 40px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.wrapper h1 {
+  font-size: 36px;
+  text-align: center;
+}
+
+.profile-info {
+  display: flex;
+  align-items: center;
+  width: 100%;
+  margin-bottom: 20px;
+}
+
+.delete-btn {
+  background: red; /* Cor de fundo para destacar a ação de exclusão */
+  color: #fff; /* Cor do texto */
+  border: none; /* Remove a borda padrão */
+  padding: 5px 10px; /* Espaçamento interno */
+  border-radius: 20px; /* Bordas arredondadas */
+  cursor: pointer; /* Muda o cursor para indicar que é clicável */
+  font-size: 14px; /* Tamanho da fonte */
+  font-weight: 600; /* Peso da fonte */
+  width: 120px; /* Largura fixa do botão */
+  height: 30px; /* Altura do botão */
+  margin-top: 10px; /* Espaço acima do botão para separá-lo */
+}
+
+.delete-btn:hover {
+  background: darkred; /* Cor de fundo ao passar o mouse */
+}
+
+.profile-photo img {
+  width: 150px;
+  height: 150px;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 2px solid #000;
+}
+
+.profile-data {
+  flex-grow: 1;
+  margin-left: 20px;
+}
+
+.profile-data p {
+  font-size: 18px;
+  margin: 2px 0;
+}
+
+.btn {
+  width: 100%;
+  height: 50px;
+  background: #fff;
+  border: 2px solid #000;
+  outline: none;
+  border-radius: 40px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  cursor: pointer;
+  font-size: 16px;
+  color: #333;
+  font-weight: 600;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 20px; /* Adiciona um espaço entre os botões */
+}
+
+.wrapper > button {
+  margin-bottom: 10px; /* Para espaçar os botões na parte inferior */
+}

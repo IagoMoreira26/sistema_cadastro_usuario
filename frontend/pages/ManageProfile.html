@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      rel="shortcut icon"
+      href="../assets/favicon.ico"
+      type="image/x-icon"
+    />
+    <title>SCU - Gerenciar Perfil</title>
+    <link rel="stylesheet" href="../styles/ManageProfile.css" />
+    <link
+      href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css"
+      rel="stylesheet"
+    />
+  </head>
+  <body>
+    <div class="wrapper">
+      <h1>Este é o seu perfil!</h1>
+      <div class="profile-info">
+        <div class="profile-photo">
+          <img src="../assets/default_profile.png" alt="Foto de Perfil" />
+        </div>
+        <div class="profile-data">
+          <p><strong>Username:</strong></p>
+          <p><strong>Email:</strong></p>
+          <p><strong>Nome:</strong></p>
+          <p><strong>Sobrenome:</strong></p>
+          <p><strong>Bio:</strong></p>
+        </div>
+      </div>
+      <div style="margin-top: auto">
+        <button class="btn" onclick="editProfile()">Editar Perfil</button>
+        <button class="btn delete-btn" onclick="deleteProfile()">
+          Excluir Perfil
+        </button>
+      </div>
+    </div>
+
+    <script src="../services/ManageProfile.js" defer></script>
+    <script src="../services/EditProfile.js"></script>
+  </body>
+</html>

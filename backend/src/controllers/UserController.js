@@ -1,7 +1,7 @@
 const bcrypt = require("bcrypt");
 const User = require("../models/User");
 const jwt = require("jsonwebtoken");
-const { createProfile } = require("./ProfileController");
+const { createProfile } = require("./ManageProfileController");
 const Joi = require("joi");
 
 // Valida os dados de cadastro.

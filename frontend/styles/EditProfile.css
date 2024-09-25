@@ -7,8 +7,8 @@
 
 body {
   display: flex;
-  justify-content: flex-end; /* Move o conteúdo para a direita */
-  align-items: stretch; /* Garante que o conteúdo ocupe toda a altura */
+  justify-content: center;
+  align-items: center;
   min-height: 100vh;
   background: url(../assets/background.jpg) no-repeat;
   background-size: cover;
@@ -16,23 +16,34 @@ body {
 }
 
 .wrapper {
-  width: 50vw; /* Metade da largura da tela */
-  height: 100vh; /* Altura igual à tela inteira */
+  width: 90vw;
+  height: 90vh;
   background: #fff;
-  border: none; /* Remove a borda */
+  border: 2px solid rgba(255, 255, 255, 0.2);
   backdrop-filter: blur(20px);
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
   color: #000;
+  border-radius: 10px;
   padding: 30px 40px;
   display: flex;
   flex-direction: column;
-  justify-content: center; /* Alinha o conteúdo verticalmente no centro */
-  align-items: center; /* Centraliza horizontalmente os itens dentro da wrapper */
+  align-items: center;
+  justify-content: center;
 }
 
 .wrapper h1 {
   font-size: 36px;
   text-align: center;
+  margin-bottom: 20px;
+}
+
+.form-container {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+  gap: 20px; /* Espaçamento entre as colunas */
+  margin-bottom: 20px;
 }
 
 .profile-photo {
@@ -48,7 +59,7 @@ body {
   border: 2px solid #000; /* Borda preta em volta da foto */
   border-radius: 50%; /* Faz a borda ser circular */
   object-fit: cover;
-  margin-right: 10px;
+  margin-right: 150px;
 }
 
 .upload-icon {
@@ -56,7 +67,7 @@ body {
   color: #000;
   cursor: pointer;
   position: absolute; /* Permite que o ícone fique fora do fluxo do flexbox */
-  left: 220px; /* Ajuste o valor conforme necessário para o espaço entre a foto e o ícone */
+  left: -50px; /* Ajuste o valor conforme necessário para o espaço entre a foto e o ícone */
   top: 50%; /* Centraliza verticalmente em relação à caixa da foto */
   transform: translateY(
     -50%
@@ -73,55 +84,58 @@ body {
   object-fit: cover; /* Mantém a proporção da imagem */
 }
 
-.wrapper .input-box {
+.form-fields {
+  display: grid;
+  grid-template-columns: 1fr 1fr; /* Organiza as caixas em duas colunas */
+  gap: 15px;
+  width: 75%; /* Ajusta o tamanho da área das caixas */
+}
+
+.input-box {
   position: relative;
-  width: 100%;
-  height: 50px;
-  margin: 10px 0;
 }
 
 .input-box input,
-.wrapper .bio-container textarea {
+.input-box textarea {
   width: 100%;
-  height: 50px; /* Altura igual aos outros campos */
-  line-height: 50px;
-  background: transparent;
-  border: 2px solid #000;
-  border-radius: 40px; /* Mantém os campos arredondados */
+  padding: 10px 40px 10px 10px; /* Espaço para ícones à esquerda */
+  padding-right: 40px; /* Adiciona espaço à direita para o ícone */
   font-size: 16px;
-  color: #000;
-  padding: 0 20px; /* Padding para dar espaço ao texto */
+  border: 2px solid #000;
+  border-radius: 40px; /* Bordas arredondadas */
+  outline: none;
+  background: transparent;
+  height: 45px;
 }
 
-.input-box input::placeholder,
-.wrapper .bio-container textarea::placeholder {
-  color: #000;
+.input-box textarea {
+  height: 45px; /* Mantenha a altura padrão para a textarea */
+  resize: none;
 }
 
 .input-box i {
   position: absolute;
-  right: 20px;
+  right: 10px; /* Move para o lado direito */
   top: 50%;
   transform: translateY(-50%);
-  font-size: 20px;
+  font-size: 18px;
+  color: #888; /* Cor opcional para os ícones */
 }
 
-.wrapper .bio-container {
-  margin: 10px 0; /* Espaçamento em cima e embaixo */
+.btn-container {
+  width: 100%; /* Garante que ocupe toda a largura disponível */
+  display: flex; /* Alinha o conteúdo do botão */
+  justify-content: center; /* Centraliza horizontalmente */
+  margin-top: 20px; /* Adiciona um espaço acima do botão para melhor visualização */
 }
 
-.wrapper .bio-container textarea {
-  resize: none; /* Remove a opção de redimensionar */
-}
-
-.wrapper .btn {
-  width: 100%;
-  height: 45px;
-  margin: 10px 0;
+.btn {
+  width: 100%; /* Faz o botão ocupar toda a largura do contêiner */
+  height: 50px;
   background: #fff;
   border: 2px solid #000;
   outline: none;
-  border-radius: 40px; /* Mantém os campos arredondados */
+  border-radius: 40px;
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
   cursor: pointer;
   font-size: 16px;
@@ -130,19 +144,9 @@ body {
   display: flex;
   justify-content: center;
   align-items: center;
-  gap: 4px;
+  margin-top: 0; /* Removido para alinhar corretamente */
 }
 
-.wrapper .btn i {
-  font-size: 20px;
-}
-
-.register-link p a {
-  color: #000;
-  text-decoration: none;
-  font-weight: 600;
-}
-
-.register-link p a:hover {
-  text-decoration: underline;
+.btn i {
+  margin-right: 8px;
 }

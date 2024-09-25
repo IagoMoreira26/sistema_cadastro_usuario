@@ -1,6 +1,6 @@
 const express = require("express");
 const router = express.Router();
-const ProfileController = require("../controllers/ProfileController");
+const ManageProfileController = require("../controllers/ManageProfileController");
 const { authenticateToken } = require("../middlewares/authMiddleware");
 
 router.post("/", authenticateToken, async (req, res) => {
@@ -8,12 +8,16 @@ router.post("/", authenticateToken, async (req, res) => {
   const { name, surname, profile_photo, bio } = req.body;
 
   try {
-    const newProfile = await ProfileController.createProfile(userId, {
+   
+    const photoToSave = profile_photo || "default-photo.png"; // Substitua pela sua imagem padrão
+
+    const newProfile = await ManageProfileController.createProfile(userId, {
       name,
       surname,
-      profile_photo,
+      profile_photo: photoToSave,
       bio,
     });
+
     return res
       .status(201)
       .json({ message: "Perfil criado com sucesso!", profile: newProfile });
@@ -23,8 +27,8 @@ router.post("/", authenticateToken, async (req, res) => {
   }
 });
 
-router.get("/:id", authenticateToken, ProfileController.getProfileById);
-router.put("/:id", authenticateToken, ProfileController.updateProfile);
-router.delete("/:id", authenticateToken, ProfileController.deleteProfile);
+router.get("/:id", authenticateToken, ManageProfileController.getProfileById);
+router.put("/:id", authenticateToken, ManageProfileController.updateProfile);
+router.delete("/:id", authenticateToken, ManageProfileController.deleteProfile);
 
 module.exports = router;

@@ -3,7 +3,11 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="shortcut icon" href="favicon.ico" type="image/x-icon" />
+    <link
+      rel="shortcut icon"
+      href="../assets/favicon.ico"
+      type="image/x-icon"
+    />
     <title>SCU - Cadastro</title>
     <link rel="stylesheet" href="../styles/Register.css" />
     <link
@@ -30,7 +34,7 @@
         </div>
         <div class="input-box">
           <input type="password" id="password" placeholder="Senha" required />
-          <i class="bx bxs-lock-alt"></i>
+          <i id="lockIcon" class="bx bxs-lock-alt" style="cursor: pointer"></i>
         </div>
 
         <button type="submit" class="btn">
@@ -40,43 +44,6 @@
       <div id="message"></div>
     </div>
 
-    <script src="../pages/Login.js" defer></script>
-    <script>
-      document.addEventListener("DOMContentLoaded", () => {
-        document
-          .getElementById("registerForm")
-          .addEventListener("submit", async (event) => {
-            event.preventDefault();
-
-            const username = document.getElementById("username").value;
-            const email = document.getElementById("email").value;
-            const password = document.getElementById("password").value;
-
-            try {
-              const response = await fetch(
-                "http://localhost:3000/api/users/register",
-                {
-                  method: "POST",
-                  headers: {
-                    "Content-Type": "application/json",
-                  },
-                  body: JSON.stringify({ username, email, password }),
-                }
-              );
-
-              const data = await response.json();
-              document.getElementById("message").innerText = data.message;
-
-              if (response.ok) {
-                localStorage.setItem("token", data.token);
-                // Redireciona para a tela de preenchimento adicional
-                window.location.href = "Additional_Info_Register.html"; // Atualize o caminho se necessário
-              }
-            } catch (error) {
-              console.error("Erro ao cadastrar usuário:", error);
-            }
-          });
-      });
-    </script>
+    <script src="../services/Register.js" defer></script>
   </body>
 </html>
