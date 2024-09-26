@@ -13,9 +13,8 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
 // Chamando o frontend.
-
 app.use(express.static(path.join(__dirname, "../../frontend")));
-app.use('/pages', express.static(path.join(__dirname, '../../frontend/pages')));
+app.use("/pages", express.static(path.join(__dirname, "../../frontend/pages")));
 
 // Importando as rotas.
 const userRoutes = require("./routes/UserRoutes");
@@ -33,6 +32,12 @@ app.use((err, req, res, next) => {
   res.status(500).json({ message: "Erro no servidor!" });
 });
 
+// Rota para tratamento de 404.
+app.use((req, res) => {
+  res.status(404).json({ message: "Rota não encontrada!" });
+});
+
+// Conexão ao banco de dados e inicialização do servidor.
 authenticateDataBase()
   .then(() => {
     app.listen(PORT, () => {

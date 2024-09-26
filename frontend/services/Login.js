@@ -57,6 +57,8 @@ loginForm.addEventListener("submit", async (event) => {
       return displayMessage(data.message || "Erro ao fazer login.");
     }
 
+    localStorage.setItem("token", data.token);
+    localStorage.setItem("userId", data.userId);
     loginForm.reset(); // Limpa os campos do formulário
     window.location.href = `./ManageProfile.html`;
   } catch (error) {

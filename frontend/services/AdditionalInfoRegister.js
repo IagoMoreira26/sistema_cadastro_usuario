@@ -22,44 +22,48 @@ document.addEventListener("DOMContentLoaded", function () {
     ).value;
     const profilePicFile = profilePicInput.files[0];
 
-    if (!name || !surname || !bio) {
+    // Verificação de campos obrigatórios
+    if (!name.trim() || !surname.trim() || !bio.trim()) {
       alert("Todos os campos devem ser preenchidos!");
       return;
     }
 
-    const formData = new FormData();
-    formData.append("name", name);
-    formData.append("surname", surname);
-    formData.append("bio", bio);
+    // Recuperar os dados do localStorage (username, email, password)
+    const username = localStorage.getItem("username");
+    const email = localStorage.getItem("email");
+    const password = localStorage.getItem("password");
 
+    // Criar um FormData para enviar todos os dados
+    const formData = new FormData();
+    formData.append("username", username);
+    formData.append("email", email);
+    formData.append("password", password);
+    formData.append("name", name.trim());
+    formData.append("surname", surname.trim());
+    formData.append("bio", bio.trim());
+
+    // Adicionar a foto de perfil, se existir
     if (profilePicFile) {
       formData.append("profile_photo", profilePicFile);
     } else {
       formData.append("profile_photo", "../assets/default_profile.png");
     }
 
-    const token = localStorage.getItem("token");
-
+    // Enviar a requisição com todos os dados
     try {
-      const response = await fetch("/api/profiles", {
+      const response = await fetch("/api/users/register", {
         method: "POST",
-        headers: {
-          Authorization: `Bearer ${token}`,
-        },
-        body: formData,
+        body: formData, // FormData permite enviar dados mistos (campos + arquivo)
       });
-
-      console.log("Resposta do servidor:", response);
 
       const data = await response.json();
 
       if (response.ok) {
+        const token = data.token;
+
         // Armazenar os dados no localStorage
-        localStorage.setItem("username", data.username || "Username Padrão");
-        localStorage.setItem("email", data.email || "email@example.com");
-        localStorage.setItem("name", name || "Nome Padrão");
-        localStorage.setItem("surname", surname || "Sobrenome Padrão");
-        localStorage.setItem("bio", bio || "Descrição padrão");
+        localStorage.setItem("profileId", data.id);
+        localStorage.setItem("token", token);
         localStorage.setItem(
           "profile_photo",
           profilePicFile
@@ -71,16 +75,14 @@ document.addEventListener("DOMContentLoaded", function () {
             : "../assets/default_profile.png"
         );
 
-        console.log(localStorage); // Adicione este log
         alert("Cadastro concluído!");
-        window.location.href = "Login.html"; // Certifique-se de que o caminho está correto
+        window.location.href = "./Login.html"; // Certifique-se de que o caminho está correto
       } else {
-        console.log("Erro na resposta:", data);
-        alert(data.message || "Erro ao criar o perfil.");
+        alert(data.message || "Erro ao registrar.");
       }
     } catch (error) {
-      console.error("Erro ao criar o perfil:", error);
-      alert("Ocorreu um erro ao tentar criar o perfil.");
+      console.error("Erro ao registrar:", error);
+      alert("Ocorreu um erro ao tentar registrar.");
     }
   });
 });

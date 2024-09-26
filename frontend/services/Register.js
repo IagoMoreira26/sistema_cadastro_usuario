@@ -12,39 +12,18 @@ lockIcon.addEventListener("click", () => {
 
 document
   .getElementById("registerForm")
-  .addEventListener("submit", async (event) => {
+  .addEventListener("submit", (event) => {
     event.preventDefault();
 
     const username = document.getElementById("username").value;
     const email = document.getElementById("email").value;
     const password = document.getElementById("password").value;
 
-    try {
-      const response = await fetch("/api/users/register", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify({ username, email, password }),
-      });
+    // Armazenar os dados no localStorage
+    localStorage.setItem("username", username);
+    localStorage.setItem("email", email);
+    localStorage.setItem("password", password);
 
-      const data = await response.json();
-
-      if (response.ok) {
-        if (data.token) {
-          localStorage.setItem("profileId", data.id);
-          localStorage.setItem("token", data.token);
-          window.location.href = "./AdditionalInfoRegister.html";
-        } else {
-          document.getElementById("message").innerText = "Token não recebido!";
-        }
-      } else {
-        document.getElementById("message").innerText =
-          data.message || "Erro desconhecido!";
-      }
-    } catch (error) {
-      console.error("Erro ao registrar:", error);
-      document.getElementById("message").innerText =
-        "Erro ao registrar. Tente novamente mais tarde.";
-    }
+    // Redirecionar para a página de informações adicionais
+    window.location.href = "./AdditionalInfoRegister.html";
   });
